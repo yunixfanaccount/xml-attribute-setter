@@ -21,6 +21,10 @@ namespace WindowsFormsApp1
 
         }
 
+        private void UpdatePreview()
+        {
+            richTextBox1.Text = doc.ToString();
+        }
 
         //specify attribute
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -81,12 +85,7 @@ namespace WindowsFormsApp1
             label4.Text = "success!";
 
             doc.Save(openFileDialog1.FileName);
-
-            /*
-            <root>
-                <foo></foo>
-            </root>
-            */
+            UpdatePreview();
         }
 
         //button browse
@@ -95,6 +94,7 @@ namespace WindowsFormsApp1
             if(openFileDialog1.ShowDialog() == DialogResult.OK) {
                 doc = XDocument.Load(openFileDialog1.FileName);
                 label1.Text = openFileDialog1.FileName;
+                UpdatePreview();
             }
         }
 
